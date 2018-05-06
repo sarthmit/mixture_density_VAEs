@@ -42,7 +42,7 @@ def compute_kumar2beta_kld(a, b, alpha, beta):
     # compute taylor expansion for E[log (1-v)] term
     kl = tf.mul(tf.pow(1+ab,-1), beta_fn(a_inv, b))
     for idx in xrange(10):
-        kl += tf.mul(tf.pow(idx+2+ab,-1), beta_fn(tf.mul(idx+2., a_inv), b))
+        kl += tf.mul(tf.pow(idx+1+ab,-1), beta_fn(tf.mul(idx+1., a_inv), b))
     kl = tf.mul(tf.mul(beta-1,b), kl)
 
     kl += tf.mul(tf.div(a-alpha,a), -0.57721 - tf.digamma(b) - b_inv)
